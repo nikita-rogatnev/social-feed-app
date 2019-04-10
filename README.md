@@ -14,4 +14,5 @@ The widget should accept the following configuration options:
 
 While implementing, think about loading and rendering performance, memory usage and leaks.
 The following feed can be used as an example: http://api.massrelevance.com/MassRelDemo/kindle.json. It supports both CORS and JSONP. It also provides some Web API: http://dev.massrelevance.com/docs/api/v1.0/stream/#ref-params-standard
+
 Bonus points for more advanced webpack/babel configurations, adding unit tests, atomic component design and or use of higher order components, and UI/UX best practices.
