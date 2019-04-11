@@ -9,7 +9,7 @@ import FeedCard from './modules/feed/feed-card';
 // API and Params
 const FEED_URL = `http://api.massrelevance.com/MassRelDemo/`;
 const AUTH = ``;
-const CARDS_COUNT = 12;
+const CARDS_COUNT = 20;
 const UPDATE_TIME = 60;
 
 const api = new API({
