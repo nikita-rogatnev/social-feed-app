@@ -18450,13 +18450,12 @@ class API {
     this._interval = time;
   }
 
-  _loadRequest() {// setInterval(this._loadRequest, this._interval);
-  }
-
   getData() {
-    return this._load({
+    const loadRequest = () => this._load({
       url: `kindle`
     }).then(toJSON).then(_components_feed_feed_model__WEBPACK_IMPORTED_MODULE_0__["default"].parseFeedItems);
+
+    return setInterval(loadRequest(), this._interval);
   }
 
   _load({
@@ -18465,6 +18464,7 @@ class API {
     body = null,
     headers = new Headers()
   }) {
+    console.log(`load`);
     return fetch(`${this._endPoint}/${url}.json?limit=${this._itemsCount}}`, {
       method,
       body,
@@ -18497,10 +18497,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment_timezone__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment_timezone__WEBPACK_IMPORTED_MODULE_2__);
 
 
- // Each post record should display:
-// - Post date (formatted as DD/MM/YYYY HH:MM) in the user's timezone
-// - Author name
-// - Message body
+
 
 class FeedCard extends _helpers_component__WEBPACK_IMPORTED_MODULE_0__["default"] {
   constructor(data) {
@@ -18510,6 +18507,12 @@ class FeedCard extends _helpers_component__WEBPACK_IMPORTED_MODULE_0__["default"
     this._user = data.user;
     this._nickname = data.nickname;
     this._date = data.date;
+  }
+
+  _getTime() {
+    let localTime = moment_moment__WEBPACK_IMPORTED_MODULE_1___default.a.utc(this._date).toDate();
+    localTime = moment_moment__WEBPACK_IMPORTED_MODULE_1___default()(localTime).format(`DD/MM/YYYY HH:MM`);
+    return localTime;
   }
 
   get template() {
@@ -18528,7 +18531,7 @@ class FeedCard extends _helpers_component__WEBPACK_IMPORTED_MODULE_0__["default"
         </main>
         <footer class="feed-card__footer">
           <time datetime="${moment_moment__WEBPACK_IMPORTED_MODULE_1___default()(this._date).format(`YYYY-MM-DD`)}">
-            ${moment_moment__WEBPACK_IMPORTED_MODULE_1___default()(this._date).format(`DD/MM/YYYY HH:MM`)}
+            ${this._getTime()}
           </time>
         </footer>
       </article>`.trim();
@@ -18657,7 +18660,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const renderWidget = (endPoint, itemsCount, interval, placeToRender) => {
+const widget = (endPoint, itemsCount, interval, placeToRender) => {
   const api = new _api__WEBPACK_IMPORTED_MODULE_0__["default"]({
     url: endPoint,
     count: itemsCount,
@@ -18676,14 +18679,13 @@ const renderWidget = (endPoint, itemsCount, interval, placeToRender) => {
   api.getData().then(feed => {
     renderFeed(feed);
   });
-}; // The widget should accept the following configuration options:
-// - Feed URL
+}; // - Feed URL
 // - Number of posts to display
 // - Update interval
 
 
 const container = document.querySelector(`.app__feed`);
-renderWidget(`//api.massrelevance.com/MassRelDemo/`, 20, 60, container);
+widget(`//api.massrelevance.com/MassRelDemo/`, 20, 1000, container);
 
 /***/ })
 
