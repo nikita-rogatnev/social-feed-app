@@ -5,5 +5,4 @@ Thumbs.db
 .vscode
 *.log*
 node_modules/
-public/bundle.js
-public/bundle.js.map
+public/
