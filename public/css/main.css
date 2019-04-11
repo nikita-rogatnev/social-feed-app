@@ -69,12 +69,17 @@ a:hover {
 
 .app__container {
   margin: 0 auto;
-  padding: 60px 0;
+  padding: 50px 0 10px;
 }
 
 .app__feed {
   column-count: 1;
   column-gap: 0;
+}
+
+.app__feed h1 {
+  text-align: center;
+  color: #14171a;
 }
 
 .feed-card {

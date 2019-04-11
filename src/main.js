@@ -6,9 +6,18 @@ import FeedCard from './modules/feed/feed-card';
 // - Number of posts to display
 // - Update interval
 
-// API
-const END_POINT = `http://api.massrelevance.com/MassRelDemo/`;
-const api = new API({endPoint: END_POINT});
+// API and Params
+const FEED_URL = `http://api.massrelevance.com/MassRelDemo/`;
+const AUTH = ``;
+const CARDS_COUNT = 12;
+const UPDATE_TIME = 60;
+
+const api = new API({
+  endPoint: FEED_URL,
+  authorization: AUTH,
+  itemsCount: CARDS_COUNT,
+  liveTime: UPDATE_TIME
+});
 
 // Render Data
 const renderFeed = (feed) => {

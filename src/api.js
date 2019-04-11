@@ -11,7 +11,7 @@ const checkStatus = (response) => {
 };
 
 class API {
-  constructor({endPoint, authorization}) {
+  constructor({endPoint, authorization, itemsCount, liveTime}) {
     this._METHODS = {
       GET: `GET`,
       POST: `POST`,
@@ -21,6 +21,8 @@ class API {
 
     this._endPoint = endPoint;
     this._authorization = authorization;
+    this._itemsCount = itemsCount;
+    this._liveTime = liveTime;
   }
 
   getData() {
@@ -31,7 +33,7 @@ class API {
 
   _load({url, method = this._METHODS.GET, body = null, headers = new Headers()}) {
     // headers.append(`Authorization`, this._authorization);
-    return fetch(`${this._endPoint}/${url}.json`, {method, body, headers})
+    return fetch(`${this._endPoint}/${url}.json?limit=${this._itemsCount}&${this._liveTime}`, {method, body, headers})
       .then(checkStatus)
       .catch((error) => {
         error.error(`fetch error: ${error}`);
