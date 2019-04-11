@@ -17903,7 +17903,7 @@ __webpack_require__.r(__webpack_exports__);
 // - Update interval
 // API and Params
 
-const FEED_URL = `http://api.massrelevance.com/MassRelDemo/`;
+const FEED_URL = `//api.massrelevance.com/MassRelDemo/`;
 const AUTH = ``;
 const CARDS_COUNT = 20;
 const UPDATE_TIME = 60;
