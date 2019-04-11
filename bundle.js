@@ -18436,8 +18436,7 @@ const checkStatus = response => {
 class API {
   constructor({
     url,
-    count,
-    time
+    count
   }) {
     this._METHODS = {
       GET: `GET`,
@@ -18447,15 +18446,12 @@ class API {
     };
     this._endPoint = url;
     this._itemsCount = count;
-    this._interval = time;
   }
 
   getData() {
-    const loadRequest = () => this._load({
+    return this._load({
       url: `kindle`
     }).then(toJSON).then(_components_feed_feed_model__WEBPACK_IMPORTED_MODULE_0__["default"].parseFeedItems);
-
-    return setInterval(loadRequest(), this._interval);
   }
 
   _load({
@@ -18464,7 +18460,6 @@ class API {
     body = null,
     headers = new Headers()
   }) {
-    console.log(`load`);
     return fetch(`${this._endPoint}/${url}.json?limit=${this._itemsCount}}`, {
       method,
       body,
@@ -18663,8 +18658,7 @@ __webpack_require__.r(__webpack_exports__);
 const widget = (endPoint, itemsCount, interval, placeToRender) => {
   const api = new _api__WEBPACK_IMPORTED_MODULE_0__["default"]({
     url: endPoint,
-    count: itemsCount,
-    time: interval
+    count: itemsCount
   });
 
   const renderFeed = feed => {
@@ -18676,16 +18670,18 @@ const widget = (endPoint, itemsCount, interval, placeToRender) => {
     }
   };
 
-  api.getData().then(feed => {
-    renderFeed(feed);
-  });
+  const renderWidget = () => {
+    api.getData().then(feed => renderFeed(feed));
+  };
+
+  setInterval(renderWidget, interval);
 }; // - Feed URL
 // - Number of posts to display
 // - Update interval
 
 
 const container = document.querySelector(`.app__feed`);
-widget(`//api.massrelevance.com/MassRelDemo/`, 20, 1000, container);
+widget(`//api.massrelevance.com/MassRelDemo/`, 20, 10000, container);
 
 /***/ })
 
