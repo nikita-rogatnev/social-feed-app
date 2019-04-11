@@ -7,7 +7,7 @@ import FeedCard from './modules/feed/feed-card';
 // - Update interval
 
 // API and Params
-const FEED_URL = `http://api.massrelevance.com/MassRelDemo/`;
+const FEED_URL = `//api.massrelevance.com/MassRelDemo/`;
 const AUTH = ``;
 const CARDS_COUNT = 20;
 const UPDATE_TIME = 60;
