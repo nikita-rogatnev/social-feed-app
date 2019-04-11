@@ -17905,7 +17905,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const FEED_URL = `http://api.massrelevance.com/MassRelDemo/`;
 const AUTH = ``;
-const CARDS_COUNT = 12;
+const CARDS_COUNT = 20;
 const UPDATE_TIME = 60;
 const api = new _api__WEBPACK_IMPORTED_MODULE_0__["default"]({
   endPoint: FEED_URL,
