@@ -4,8 +4,7 @@ import FeedCard from './components/feed/feed-card';
 const widget = (endPoint, itemsCount, interval, placeToRender) => {
   const api = new API({
     url: endPoint,
-    count: itemsCount,
-    time: interval
+    count: itemsCount
   });
 
   const renderFeed = (feed) => {
@@ -17,14 +16,15 @@ const widget = (endPoint, itemsCount, interval, placeToRender) => {
     }
   };
 
-  api.getData()
-    .then((feed) => {
-      renderFeed(feed);
-    });
+  const renderWidget = () => {
+    api.getData().then((feed) => renderFeed(feed));
+  };
+
+  setInterval(renderWidget, interval);
 };
 
 // - Feed URL
 // - Number of posts to display
 // - Update interval
 const container = document.querySelector(`.app__feed`);
-widget(`//api.massrelevance.com/MassRelDemo/`, 20, 1000, container);
+widget(`//api.massrelevance.com/MassRelDemo/`, 20, 10000, container);

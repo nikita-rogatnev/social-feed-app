@@ -11,7 +11,7 @@ const checkStatus = (response) => {
 };
 
 class API {
-  constructor({url, count, time}) {
+  constructor({url, count}) {
     this._METHODS = {
       GET: `GET`,
       POST: `POST`,
@@ -21,19 +21,15 @@ class API {
 
     this._endPoint = url;
     this._itemsCount = count;
-    this._interval = time;
   }
 
   getData() {
-    const loadRequest = () => this._load({url: `kindle`})
+    return this._load({url: `kindle`})
       .then(toJSON)
       .then(FeedModel.parseFeedItems);
-
-    return setInterval(loadRequest(), this._interval);
   }
 
   _load({url, method = this._METHODS.GET, body = null, headers = new Headers()}) {
-    console.log(`load`);
     return fetch(`${this._endPoint}/${url}.json?limit=${this._itemsCount}}`, {method, body, headers})
       .then(checkStatus)
       .catch((error) => {
