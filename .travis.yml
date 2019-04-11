@@ -9,7 +9,7 @@ notifications:
 script: webpack
 
 deploy:
-  local-dir: dist
+  local-dir: public
   provider: pages
   skip-cleanup: true
   keep-history: true
