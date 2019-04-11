@@ -1,0 +1,43 @@
+:root {
+  --font: 'Montserrat', sans-serif;
+  --font-size-big: 21px;
+  --font-size-bigger: 17px;
+  --font-size-smaller: 13px;
+
+  --text-color: #000;
+  --text-color-contrast: #fff;
+
+  --color-blue: #0D8AE4;
+}
+
+html {
+  background: #eee;
+  font-family: var(--font);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+a:link {
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.1s ease-out;
+}
+
+a:hover {
+  opacity: 1;
+}
+
+.header__container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.app__container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.footer__container {
+  width: 1000px;
+  margin: 0 auto;
+}
