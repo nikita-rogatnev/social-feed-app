@@ -18460,7 +18460,7 @@ class API {
     body = null,
     headers = new Headers()
   }) {
-    return fetch(`${this._endPoint}/${url}.json?limit=${this._itemsCount}}`, {
+    return fetch(`${this._endPoint}/${url}.json?limit=${this._itemsCount}`, {
       method,
       body,
       headers
@@ -18674,6 +18674,7 @@ const widget = (endPoint, itemsCount, interval, placeToRender) => {
     api.getData().then(feed => renderFeed(feed));
   };
 
+  renderWidget();
   setInterval(renderWidget, interval);
 }; // - Feed URL
 // - Number of posts to display
