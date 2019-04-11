@@ -29,7 +29,7 @@ class API {
       .then(toJSON)
       .then(FeedModel.parseFeedItems);
 
-    return setInterval(loadRequest, this._interval);
+    return setInterval(loadRequest(), this._interval);
   }
 
   _load({url, method = this._METHODS.GET, body = null, headers = new Headers()}) {

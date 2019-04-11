@@ -27,4 +27,4 @@ const widget = (endPoint, itemsCount, interval, placeToRender) => {
 // - Number of posts to display
 // - Update interval
 const container = document.querySelector(`.app__feed`);
-widget(`//api.massrelevance.com/MassRelDemo/`, 20, 100, container);
+widget(`//api.massrelevance.com/MassRelDemo/`, 20, 1000, container);
