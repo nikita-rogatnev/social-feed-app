@@ -1,13 +1,14 @@
-import ModelTripPoint from './modules/trip-points/model-trip-point';
-
-const CheckStatus = (response) => {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-  throw new Error(`${response.status}: ${response.statusText}`);
-};
+import FeedModel from './modules/feed/feed-model';
 
 const toJSON = (response) => response.json();
+
+const checkStatus = (response) => {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  } else {
+    throw new Error(`${response.status}: ${response.statusText}`);
+  }
+};
 
 class API {
   constructor({endPoint, authorization}) {
@@ -22,18 +23,18 @@ class API {
     this._authorization = authorization;
   }
 
-  getTripPoints() {
-    return this._load({url: `points`})
+  getData() {
+    return this._load({url: `kindle`})
       .then(toJSON)
-      .then(ModelTripPoint.parseTripPoints);
+      .then(FeedModel.parseFeedItems);
   }
 
   _load({url, method = this._METHODS.GET, body = null, headers = new Headers()}) {
-    headers.append(`Authorization`, this._authorization);
-
-    return fetch(`${this._endPoint}/${url}`, {method, body, headers})
-      .then(CheckStatus)
+    // headers.append(`Authorization`, this._authorization);
+    return fetch(`${this._endPoint}/${url}.json`, {method, body, headers})
+      .then(checkStatus)
       .catch((error) => {
+        error.error(`fetch error: ${error}`);
         throw error;
       });
   }

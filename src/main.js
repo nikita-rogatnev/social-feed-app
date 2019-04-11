@@ -1,15 +1,23 @@
 import API from './api';
+import Feed from './modules/feed/feed';
 
 // API
-const AUTHORIZATION = `Basic wqe21fwq32WEF32CDWae2d=${Math.random()}`;
-const END_POINT = `https://es8-demo-srv.appspot.com/big-trip`;
-const api = new API({endPoint: END_POINT, authorization: AUTHORIZATION});
+const END_POINT = `http://api.massrelevance.com/MassRelDemo/`;
+const api = new API({endPoint: END_POINT});
 
-const tripDayContainer = document.querySelector(`.app__container`);
+// Render Data
+const renderFeed = (feed) => {
+  const container = document.querySelector(`.app__container`);
+  container.innerHTML = ``;
 
-const renderTripPoints = () => {
-  tripDayContainer.innerHTML = `Loading...`;
-  api.getTripPoints();
+  for (const feedCard of feed) {
+    const taskComponent = new Feed(feedCard);
+    container.appendChild(taskComponent.render());
+  }
 };
 
-renderTripPoints();
+api.getData()
+  .then((feed) => {
+    renderFeed(feed);
+  });
+
