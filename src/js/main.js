@@ -1,7 +1,7 @@
 import API from './api';
 import FeedCard from './components/feed/feed-card';
 
-const renderWidget = (endPoint, itemsCount, interval, placeToRender) => {
+const widget = (endPoint, itemsCount, interval, placeToRender) => {
   const api = new API({
     url: endPoint,
     count: itemsCount,
@@ -23,9 +23,8 @@ const renderWidget = (endPoint, itemsCount, interval, placeToRender) => {
     });
 };
 
-// The widget should accept the following configuration options:
 // - Feed URL
 // - Number of posts to display
 // - Update interval
 const container = document.querySelector(`.app__feed`);
-renderWidget(`//api.massrelevance.com/MassRelDemo/`, 20, 60, container);
+widget(`//api.massrelevance.com/MassRelDemo/`, 20, 100, container);

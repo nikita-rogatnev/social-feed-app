@@ -24,17 +24,16 @@ class API {
     this._interval = time;
   }
 
-  _loadRequest() {
-    // setInterval(this._loadRequest, this._interval);
-  }
-
   getData() {
-    return this._load({url: `kindle`})
+    const loadRequest = () => this._load({url: `kindle`})
       .then(toJSON)
       .then(FeedModel.parseFeedItems);
+
+    return setInterval(loadRequest, this._interval);
   }
 
   _load({url, method = this._METHODS.GET, body = null, headers = new Headers()}) {
+    console.log(`load`);
     return fetch(`${this._endPoint}/${url}.json?limit=${this._itemsCount}}`, {method, body, headers})
       .then(checkStatus)
       .catch((error) => {

@@ -2,11 +2,6 @@ import Component from '../../helpers/component';
 import moment from 'moment/moment';
 import 'moment-timezone';
 
-// Each post record should display:
-// - Post date (formatted as DD/MM/YYYY HH:MM) in the user's timezone
-// - Author name
-// - Message body
-
 class FeedCard extends Component {
   constructor(data) {
     super();
@@ -15,6 +10,12 @@ class FeedCard extends Component {
     this._user = data.user;
     this._nickname = data.nickname;
     this._date = data.date;
+  }
+
+  _getTime() {
+    let localTime = moment.utc(this._date).toDate();
+    localTime = moment(localTime).format(`DD/MM/YYYY HH:MM`);
+    return localTime;
   }
 
   get template() {
@@ -33,7 +34,7 @@ class FeedCard extends Component {
         </main>
         <footer class="feed-card__footer">
           <time datetime="${moment(this._date).format(`YYYY-MM-DD`)}">
-            ${moment(this._date).format(`DD/MM/YYYY HH:MM`)}
+            ${this._getTime()}
           </time>
         </footer>
       </article>`.trim();
