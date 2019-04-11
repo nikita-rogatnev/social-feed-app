@@ -1,37 +1,32 @@
-:root {
-  --font: 'Montserrat', sans-serif;
-  --font-size-big: 21px;
-  --font-size-bigger: 17px;
-  --font-size-smaller: 13px;
-
-  --text-color: #14171a;
-  --text-color-contrast: #ffffff;
-}
-
 html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 html {
-  background: #e6ecf0;
-  font-family: var(--font);
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 400;
+
+  background: #e6ecf0;
+
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  max-width: 100%;
   width: 100%;
+  max-width: 100%;
 }
 
 a:link {
+  transition: opacity .1s ease-out;
   text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.1s ease-out;
+
+  opacity: .7;
 }
 
 a:hover {
@@ -39,16 +34,19 @@ a:hover {
 }
 
 .header {
-  background: #ffffff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0;
+  line-height: 0;
+
   position: fixed;
+  z-index: 100;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 100;
+
   width: 100%;
-  font-size: 0;
-  line-height: 0;
+
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+  background: #fff;
 }
 
 .header__container {
@@ -58,6 +56,7 @@ a:hover {
 
 .header__logo {
   display: block;
+
   width: 40px;
   margin: 0 auto;
 }
@@ -69,7 +68,7 @@ a:hover {
 
 .app__container {
   margin: 0 auto;
-  padding: 50px 0 10px;
+  padding: 50px 10px 10px;
 }
 
 .app__feed {
@@ -79,16 +78,19 @@ a:hover {
 
 .app__feed h1 {
   text-align: center;
+
   color: #14171a;
 }
 
 .feed-card {
-  width: 100%;
-  padding: 9px 12px;
-  background: #ffffff;
-  border: 1px solid #e6ecf0;
   display: flex;
   flex-direction: column;
+
+  width: 100%;
+  padding: 9px 12px;
+
+  border: 1px solid #e6ecf0;
+  background: #fff;
 }
 
 .feed-card:hover {
@@ -96,34 +98,40 @@ a:hover {
 }
 
 .feed-card__title {
-  margin: 0;
-  padding: 0;
-  word-break: break-all;
-  color: #14171a;
   font-size: 14px;
   font-weight: bold;
+
+  margin: 0;
+  padding: 0;
+
+  word-break: break-all;
+
+  color: #14171a;
 }
 
 .feed-card__title a {
-  color: #14171a;
   display: flex;
   justify-content: space-between;
+
+  color: #14171a;
 }
 
 .feed-card__nickname {
   font-size: 14px;
-  color: #657786;
   font-weight: normal;
+
+  color: #657786;
 }
 
 .feed-card__body {
   font-size: 14px;
-  line-height: 20px;
   font-weight: normal;
+  line-height: 20px;
 }
 
 .feed-card__footer {
   font-size: 14px;
+
   color: #657786;
 }
 
@@ -140,6 +148,7 @@ a:hover {
 
   .app__container {
     width: 1140px;
+    padding: 50px 0 10px;
   }
 
   .app__feed {
