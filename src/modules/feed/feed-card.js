@@ -22,7 +22,8 @@ class FeedCard extends Component {
         <header class="feed-card__header">
           <h1 class="feed-card__title">
             <a href="${this._user.url}" target="_blank">
-              ${this._user.name}  <span class="feed-card__nickname">@${this._nickname}</span>
+              ${this._user.name}
+              <span class="feed-card__nickname">@${this._nickname}</span>
             </a>
           </h1>
         </header>
@@ -30,7 +31,7 @@ class FeedCard extends Component {
           <p>${this._text}</p>
         </main>
         <footer class="feed-card__footer">
-          <time>
+          <time datetime="${moment(this._date).format(`YYYY-MM-DD`)}">
             ${moment(this._date).format(`DD/MM/YYYY HH:MM`)}
           </time>
         </footer>
