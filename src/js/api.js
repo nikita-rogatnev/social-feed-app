@@ -30,7 +30,7 @@ class API {
   }
 
   _load({url, method = this._METHODS.GET, body = null, headers = new Headers()}) {
-    return fetch(`${this._endPoint}/${url}.json?limit=${this._itemsCount}}`, {method, body, headers})
+    return fetch(`${this._endPoint}/${url}.json?limit=${this._itemsCount}`, {method, body, headers})
       .then(checkStatus)
       .catch((error) => {
         error.error(`fetch error: ${error}`);

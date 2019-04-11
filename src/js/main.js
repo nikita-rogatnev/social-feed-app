@@ -20,6 +20,7 @@ const widget = (endPoint, itemsCount, interval, placeToRender) => {
     api.getData().then((feed) => renderFeed(feed));
   };
 
+  renderWidget();
   setInterval(renderWidget, interval);
 };
 
