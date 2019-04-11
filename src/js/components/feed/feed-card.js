@@ -1,5 +1,6 @@
 import Component from '../../helpers/component';
-import moment from 'moment';
+import moment from 'moment/moment';
+import 'moment-timezone';
 
 // Each post record should display:
 // - Post date (formatted as DD/MM/YYYY HH:MM) in the user's timezone
